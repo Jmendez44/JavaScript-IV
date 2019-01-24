@@ -36,9 +36,65 @@ class Student extends Person {
         this.className = sAttributes.className;
         this.favSubjects = sAttributes.favSubjects;
     }
-    listSubjects() {
-        return this.favSubjects;
+
+    listSubjects(s1, s2, s3) {
+        return `${s1}, ${s2}, ${s3}`
+    }
+
+    PRAssignment(subject) {
+        return `${this.name} has submitted a PR for ${subject}`
+    }
+    sprintChallenge(subject) {
+        return `${this.name} has begun sprint challenge on ${subject}`
+    }
+}
+
+class ProjectManager extends Instructor {
+    constructor(pmAttributes) {
+        super(pmAttributes);
+        this.gradClassName = pmAttributes.gradClassName;
+        this.favInstructor = pmAttributes.favInstructor;
+    }
+    standUp(channel) {
+        return `${this.name} announces to ${channel}, @channel standy times!`;
+    }
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`;
     }
 }
 
 
+
+
+const josh = new Instructor ({
+    name: 'Josh',
+    specialty: 'front end'
+})
+
+const jay = new Student({
+    name: 'Jay',
+    location: 'New Jersey',
+    age: 27,
+    gender: 'male',
+    favLanguage: 'JS',
+    specialty: 'front-end',
+    catchPhrase: 'Support the homies'
+})
+
+const mikaela = new ProjectManager ({
+    name: 'mikaela'
+})
+
+
+//instructors
+console.log(josh.demo('javascript'));
+console.log(josh.grade(jay, 'javascript'));
+
+// students
+console.log(jay.PRAssignment('Javascript'));
+console.log(jay.sprintChallenge( 'javascript'));
+
+
+//PM
+console.log(mikaela.standUp('web17'));
+console.log(mikaela.debugsCode(jay, 'javascript'));
